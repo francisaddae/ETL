@@ -44,7 +44,7 @@ def load_data(transformed_data):
         conn = pg.connect(
             database='maindb',
             user='postgres',
-            password='francis419.',
+            password=str(input('Enter the password for postgres: ')),
             host='localhost',port=5432
         )
         request = conn.cursor()
