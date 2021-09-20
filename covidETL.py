@@ -93,9 +93,10 @@ def create_visual(conn):
         logger.info(f'\n{df.head(5)}')
 
         plt.plot(df.date_of_interest, df.case_count, label='covid cases')
-        plt.plot(df.date_of_interest, df.hospitalized_count, label='covid hospitalized cases per day')
-        plt.plot(df.date_of_interest, df.death_count, label='covid death cases per day')
+        plt.plot(df.date_of_interest, df.hospitalized_count, label='covid hospitalized cases per day', color='green')
+        plt.plot(df.date_of_interest, df.death_count, label='covid death cases per day', color='darkred')
         plt.legend()
+
         plt.show()
 
     except  Exception as error:
