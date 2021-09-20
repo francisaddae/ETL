@@ -7,4 +7,5 @@ if __name__ == '__main__':
         a = covidETL.get_data()
         b = covidETL.transfrom_data(a)
         c = covidETL.load_data(b)
+        d = covidETL.create_visual(c)
     dc.run()
