@@ -1,3 +1,11 @@
+'''
+  This etl process is a copy of a known pipline written by Jonathan Duran.
+  His was in airflow. This showcases how to replicate that in prefect pipeline.
+  https://python.plainenglish.io/simple-etl-with-airflow-372b0109549
+'''
+
+
+
 from io import StringIO
 import requests as r
 import json as js
