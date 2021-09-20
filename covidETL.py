@@ -4,16 +4,15 @@
   https://python.plainenglish.io/simple-etl-with-airflow-372b0109549
 '''
 
-
-
 from io import StringIO
 import requests as r
 import json as js
 import pandas as pd
 import psycopg2 as pg
 import datetime as dt
+import matplotlib.pyplot as plt
 from prefect import task, context
-from requests.api import request
+
 
 logger = context.get('logger')
 
@@ -82,3 +81,28 @@ def load_data(transformed_data):
             conn.commit()
             request.close()
             return conn
+
+def create_visual(conn):
+    try:
+        request = conn.cursor()
+        request.execute('SELECT * FROM COVID_DATA;')
+        record = request.fetchall()
+        headers = [key[0] for key in request.description]
+
+        df = pd.DataFrame(record,columns=headers)
+
+        plt.plot(df.date, df.case_count)
+        plt.legend()
+        plt.show()
+
+
+    except  Exception as error:
+        logger.info(error)
+        return False
+
+    finally:
+        if True:
+            conn.commit()
+            request.close()
+            conn.close()
+            return True
