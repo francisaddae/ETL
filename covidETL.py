@@ -18,3 +18,12 @@ def get_data():
     except  Exception as error:
         message.info(error)
         return False
+
+
+def transfrom_data(extracted_data):
+    try:
+        df = extracted_data[:,[0,4]]
+        message.info(df)
+    except  Exception as error:
+        message.info(error)
+        return False
