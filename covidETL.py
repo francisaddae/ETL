@@ -90,11 +90,13 @@ def create_visual(conn):
         headers = [key[0] for key in request.description]
 
         df = pd.DataFrame(record,columns=headers)
+        logger.info(f'\n{df.head(5)}')
 
-        plt.plot(df.date, df.case_count)
+        plt.plot(df.date_of_interest, df.case_count, label='covid cases')
+        plt.plot(df.date_of_interest, df.hospitalized_count, label='covid hospitalized cases per day')
+        plt.plot(df.date_of_interest, df.death_count, label='covid death cases per day')
         plt.legend()
         plt.show()
-
 
     except  Exception as error:
         logger.info(error)
