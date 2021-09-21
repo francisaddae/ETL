@@ -92,9 +92,11 @@ def create_visual(conn):
         df = pd.DataFrame(record,columns=headers)
         logger.info(f'\n{df.head(5)}')
 
-        df.plot(df.date_of_interest, df.case_count, label='covid cases')
-        df.plot(df.date_of_interest, df.hospitalized_count, label='covid hospitalized cases per day', color='green')
+        df.plot(df.date_of_interest, df.case_count, label='covid cases', color='darkblue')
+        df.plot(df.date_of_interest, df.hospitalized_count, label='covid hospitalized cases per day', color='black')
         df.plot(df.date_of_interest, df.death_count, label='covid death cases per day', color='darkred')
+
+        plt.title('Covid Data in the NYC Metropolitan Area')
         plt.legend()
 
         plt.show()
